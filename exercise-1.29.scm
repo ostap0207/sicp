@@ -17,16 +17,16 @@
 (define (inc n) (+ n 1))
 
 (define (integral-by-simon f a b n)
-  (define h (/ (- b a) n))
-  (define (calc-y k) (f (+ a (* k h))))
-  (define (calc-coef k)
-    (cond ((= k 0) 1)
-          ((= k n) 1)
-          ((even? k) 2)
-          (else 4)))
+  (let ((h (/ (- b a) n)))
+    (define (calc-y k) (f (+ a (* k h))))
+    (define (calc-coef k)
+      (cond ((= k 0) 1)
+            ((= k n) 1)
+            ((even? k) 2)
+            (else 4)))
 
-  (define (calc-element-at k) (* (calc-coef k) (calc-y k)))
-  (* (sum calc-element-at 0 inc n) (/ h 3)))
+    (define (calc-element-at k) (* (calc-coef k) (calc-y k)))
+    (* (sum calc-element-at 0 inc n) (/ h 3))))
 
 (define (cube x) (* x x x))
 
