@@ -26,8 +26,12 @@
                                 b
                                 (/ counter 2)))
           (else (expt-iter (* (square acc) b)
-                                b
-                                (/ (- counter 1) 2)))))
+                           b
+                           (/ (- counter 1) 2)))))
+
+
+
+
   (expt-iter b b n))
 
 (fast-iter-expt 2 4)
